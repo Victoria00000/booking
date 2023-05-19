@@ -31,15 +31,14 @@ app.get("/", (req, res) => {
   res.send("Hola Mundo con express");
 });
 
-// middlewares
-app.use(express.json());
+// middlewares //
+// endpoints
 app.use("/api/auth", routerAuth);
 app.use("/api/hotels", routerHotels);
 app.use("/api/rooms", routerRooms);
 app.use("/api/users", routerUsers);
 
 const PORT = process.env.PORT || 3000;
-
 app.listen(PORT, () => {
   connectDB();
   console.log(`Servidor escuchando en el puerto: ${PORT}`);
