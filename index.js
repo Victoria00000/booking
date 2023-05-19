@@ -32,6 +32,7 @@ app.get("/", (req, res) => {
 });
 
 // middlewares //
+app.use(express.json());
 // endpoints
 app.use("/api/auth", routerAuth);
 app.use("/api/hotels", routerHotels);
