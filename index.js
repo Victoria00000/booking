@@ -1,6 +1,10 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import { routerAuth } from "./routes/auth.js";
+import { routerHotels } from "./routes/hotels.js";
+import { routerRooms } from "./routes/rooms.js";
+import { routerUsers } from "./routes/users.js";
 
 const app = express();
 dotenv.config();
@@ -24,10 +28,19 @@ mongoose.connection.on("connected", () => {
 });
 
 app.get("/", (req, res) => {
-  res.status(200).send("Hello World");
+  res.send("Hola Mundo con express");
 });
 
-app.listen(3000, () => {
+// middlewares
+app.use(express.json());
+app.use("/api/auth", routerAuth);
+app.use("/api/hotels", routerHotels);
+app.use("/api/rooms", routerRooms);
+app.use("/api/users", routerUsers);
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
   connectDB();
-  console.log("Server started on port 3000");
+  console.log(`Servidor escuchando en el puerto: ${PORT}`);
 });
