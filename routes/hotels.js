@@ -51,11 +51,13 @@ routerHotels.get("/:id", async (req, res) => {
 });
 
 // get all hotels //
-routerHotels.get("/", async (req, res) => {
+routerHotels.get("/", async (req, res, next) => {
+  console.log("get all hotels");
+
   try {
     const hotels = await HotelModel.find();
     res.status(200).json(hotels);
-  } catch (error) {
-    res.status(500).json(error);
+  } catch (err) {
+    next(err);
   }
 });
