@@ -38,7 +38,7 @@ app.get("/", (req, res) => {
 // middlewares //
 app.use(express.json());
 
-// endpoints
+// router endpoints
 app.use("/api/auth", routerAuth);
 app.use("/api/hotels", routerHotels);
 app.use("/api/rooms", routerRooms);
@@ -52,6 +52,7 @@ app.use((err, req, res, next) => {
     success: false,
     status: errorStatus,
     message: errorMessage,
+    stack: err.stack,
   });
 });
 
@@ -59,5 +60,5 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   connectDB();
-  console.log(`Servidor escuchando en el puerto: ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
