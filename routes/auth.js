@@ -1,7 +1,7 @@
 import { Router } from "express";
+import { register } from "../controllers/auth.js";
 
 export const routerAuth = Router();
 
-routerAuth.get("/", (req, res) => {
-  res.send("I am an Auth endpoint");
-});
+// create: POST //
+routerAuth.post("/register", register);
