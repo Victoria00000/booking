@@ -5,6 +5,7 @@ import { routerAuth } from "./routes/auth.js";
 import { routerHotels } from "./routes/hotels.js";
 import { routerRooms } from "./routes/rooms.js";
 import { routerUsers } from "./routes/users.js";
+import cookieParser from "cookie-parser";
 
 // initilice express app //
 const app = express();
@@ -36,6 +37,9 @@ app.get("/", (req, res) => {
 });
 
 // middlewares //
+// parse cookies
+app.use(cookieParser());
+// parse json body
 app.use(express.json());
 
 // router endpoints
