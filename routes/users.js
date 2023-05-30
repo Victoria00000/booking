@@ -28,13 +28,13 @@ routerUsers.get("/check-admin/:id", verifyAdmin, (req, res, next) => {
 });
 
 // get all users: GET //
-routerUsers.get("/", getAllUsers);
+routerUsers.get("/", verifyAdmin, getAllUsers);
 
 // get user by id: GET //
-routerUsers.get("/:id", getUser);
+routerUsers.get("/:id", verifyUser, getUser);
 
 // delete user by id: DELETE //
-routerUsers.delete("/:id", deleteUser);
+routerUsers.delete("/:id", verifyUser, deleteUser);
 
 // update user by id: PUT //
-routerUsers.put("/:id", updateUser);
+routerUsers.put("/:id", verifyUser, updateUser);

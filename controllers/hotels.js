@@ -1,6 +1,8 @@
 import HotelModel from "../models/HotelModel.js";
 
-// create:  POST //
+// Controllers for  hotels //
+
+// create a new hotel //
 export const createNewHotel = async (req, res, next) => {
   const newHotel = new HotelModel(req.body);
   try {
@@ -11,7 +13,7 @@ export const createNewHotel = async (req, res, next) => {
   }
 };
 
-// update: PUT //
+// update the hotel by id //
 export const updateHotel = async (req, res, next) => {
   try {
     const updatedHotel = await HotelModel.findByIdAndUpdate(
@@ -27,7 +29,7 @@ export const updateHotel = async (req, res, next) => {
   }
 };
 
-// delete: DELETE //
+// delete the hotel by id //
 export const deleteHotel = async (req, res, next) => {
   try {
     await HotelModel.findByIdAndDelete(req.params.id);
@@ -37,7 +39,7 @@ export const deleteHotel = async (req, res, next) => {
   }
 };
 
-// get 1 hotel: GET //
+// get 1 hotel by id //
 export const getHotel = async (req, res, next) => {
   try {
     const hotel = await HotelModel.findById(req.params.id);
@@ -47,7 +49,7 @@ export const getHotel = async (req, res, next) => {
   }
 };
 
-// get all hotels: GET //
+// get all hotels //
 export const getAllHotels = async (req, res, next) => {
   try {
     const hotels = await HotelModel.find();

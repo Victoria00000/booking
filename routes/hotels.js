@@ -6,18 +6,19 @@ import {
   getHotel,
   updateHotel,
 } from "../controllers/hotels.js";
+import { verifyAdmin } from "../utils/verifyToken.js";
 
 // creating the router //
 export const routerHotels = Router();
 
 // create: POST //
-routerHotels.post("/", createNewHotel);
+routerHotels.post("/", verifyAdmin, createNewHotel);
 
 // update: PUT //
-routerHotels.put("/:id", updateHotel);
+routerHotels.put("/:id", verifyAdmin, updateHotel);
 
 // delete: DELETE //
-routerHotels.delete("/:id", deleteHotel);
+routerHotels.delete("/:id", verifyAdmin, deleteHotel);
 
 // get 1 hotel: GET //
 routerHotels.get("/:id", getHotel);
