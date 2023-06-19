@@ -19,5 +19,3 @@ package-lock.json
 /node_modules
 .env
 
-api/node_modules
-client/node_modules

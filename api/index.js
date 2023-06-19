@@ -6,6 +6,7 @@ import { routerHotels } from "./routes/hotels.js";
 import { routerRooms } from "./routes/rooms.js";
 import { routerUsers } from "./routes/users.js";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 // initilice express app //
 const app = express();
@@ -39,6 +40,8 @@ app.get("/", (req, res) => {
 // middlewares //
 // parse cookies
 app.use(cookieParser());
+// cors for cross origin requests
+app.use(cors());
 // parse json body
 app.use(express.json());
 
@@ -61,7 +64,7 @@ app.use((err, req, res, next) => {
 });
 
 // server //
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   connectDB();
   console.log(`Server is running on port ${PORT}`);
