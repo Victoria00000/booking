@@ -4,6 +4,7 @@ import {
   deleteHotel,
   getAllHotels,
   getCountByCity,
+  getCountByType,
   getHotel,
   updateHotel,
 } from "../controllers/hotels.js";
@@ -31,4 +32,4 @@ routerHotels.get("/", getAllHotels);
 routerHotels.get("/countByCity", getCountByCity);
 
 // get hotels by type: GET //
-routerHotels.get("/countByType", getAllHotels);
+routerHotels.get("/countByType", getCountByType);
