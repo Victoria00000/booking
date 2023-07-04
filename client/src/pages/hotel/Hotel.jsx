@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import "./hotel.css";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
@@ -14,6 +15,8 @@ import { useContext, useState } from "react";
 import { useFetch } from "../../customHooks/useFetch.js";
 import { useLocation } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
+import { AuthContext } from "../../context/AuthContext";
+import { Reserve } from "../../components/reserve/Reserve";
 
 const Hotel = () => {
   const Location = useLocation();
@@ -21,10 +24,15 @@ const Hotel = () => {
 
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
+  const [openReservation, setOpenReservation] = useState(false);
 
   const { data, loading, error } = useFetch(`/hotels/find/${Id}`);
 
   const { dates, options } = useContext(SearchContext);
+
+  const { user } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
 
@@ -51,6 +59,14 @@ const Hotel = () => {
     }
 
     setSlideNumber(newSlideNumber);
+  };
+
+  const handleReservation = () => {
+    if (user) {
+      setOpenReservation(true);
+    } else {
+      navigate("/login");
+    }
   };
 
   return (
@@ -94,7 +110,9 @@ const Hotel = () => {
               <FontAwesomeIcon icon={faLocationDot} />
               <span> {data.address} </span>
             </div>
-            <span className="hotelDistance"> {data.distance} </span>
+            <span className="hotelDistance">
+              located {data.distance}m from the city center
+            </span>
             <span className="hotelPriceHighlight">
               Book a stay over {data.cheapestPrice} at this property and get a
               free airport taxi
@@ -126,13 +144,18 @@ const Hotel = () => {
                   <b> {days * data.cheapestPrice * options.room} </b> ({days}{" "}
                   nights)
                 </h2>
-                <button>Reserve or Book Now!</button>
+                <button onClick={handleReservation}>
+                  Reserve or Book Now!
+                </button>
               </div>
             </div>
           </div>
           <MailList />
           <Footer />
         </div>
+      )}
+      {openReservation && (
+        <Reserve setOpenReservation={setOpenReservation} hotelId={Id}></Reserve>
       )}
     </div>
   );
