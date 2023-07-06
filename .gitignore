@@ -1,5 +1,6 @@
 /api/node_modules
 /client/node_modules
+/admin/node_modules
 /.pnp
 .pnp.js
 /coverage
@@ -15,8 +16,13 @@ package-lock.json
 .env
 /node_modules/.cache
 /node_modules/.bin
+admin/node_modules/.bin
 /node_modules/.cache/.eslintcache
 /node_modules/.cache/babel-loader
 /node_modules/.cache/default-development
+admin/node_modules/@ampproject
+admin/node_modules/@apideck
+admin/node_modules/@babel
+admin/node_modules/.package-lock.json
 
 
