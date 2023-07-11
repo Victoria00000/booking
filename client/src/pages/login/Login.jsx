@@ -37,7 +37,7 @@ export const Login = () => {
         <input
           className="lInput"
           type="text"
-          placeholder="username"
+          placeholder="usuario3"
           id="username"
           onChange={handleChange}
         />
@@ -45,7 +45,7 @@ export const Login = () => {
         <input
           className="lInput"
           type="password"
-          placeholder="password"
+          placeholder="313456kk"
           id="password"
           onChange={handleChange}
         />
