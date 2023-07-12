@@ -11,55 +11,56 @@ const List = () => {
   const rows = [
     {
       id: 1143155,
-      product: "Acer Nitro 5",
-      img: "https://m.media-amazon.com/images/I/81bc8mA3nKL._AC_UY327_FMwebp_QL65_.jpg",
+      hotelName: "Hotel Example 1",
+      img: "https://cdn.pixabay.com/photo/2023/07/04/10/20/river-8105970_1280.jpg",
       customer: "John Smith",
       date: "1 March",
-      amount: 785,
-      method: "Cash on Delivery",
-      status: "Approved",
+      price: 785,
+      paymentMethod: "Credit Card",
+      status: "Confirmed",
     },
     {
       id: 2235235,
-      product: "Playstation 5",
-      img: "https://m.media-amazon.com/images/I/31JaiPXYI8L._AC_UY327_FMwebp_QL65_.jpg",
+      hotelName: "Hotel Example 2",
+      img: "https://cdn.pixabay.com/photo/2023/07/04/10/20/river-8105970_1280.jpg",
       customer: "Michael Doe",
       date: "1 March",
-      amount: 900,
-      method: "Online Payment",
+      price: 900,
+      paymentMethod: "Online Payment",
       status: "Pending",
     },
     {
       id: 2342353,
-      product: "Redragon S101",
-      img: "https://m.media-amazon.com/images/I/71kr3WAj1FL._AC_UY327_FMwebp_QL65_.jpg",
+      hotelName: "Hotel Example 3",
+      img: "https://cdn.pixabay.com/photo/2023/07/04/10/20/river-8105970_1280.jpg",
       customer: "John Smith",
       date: "1 March",
-      amount: 35,
-      method: "Cash on Delivery",
+      price: 35,
+      paymentMethod: "Cash on Arrival",
       status: "Pending",
     },
     {
       id: 2357741,
-      product: "Razer Blade 15",
-      img: "https://m.media-amazon.com/images/I/71wF7YDIQkL._AC_UY327_FMwebp_QL65_.jpg",
+      hotelName: "Hotel Example 4",
+      img: "https://cdn.pixabay.com/photo/2023/07/04/10/20/river-8105970_1280.jpg",
       customer: "Jane Smith",
       date: "1 March",
-      amount: 920,
-      method: "Online",
-      status: "Approved",
+      price: 920,
+      paymentMethod: "Credit Card",
+      status: "Confirmed",
     },
     {
       id: 2342355,
-      product: "ASUS ROG Strix",
-      img: "https://m.media-amazon.com/images/I/81hH5vK-MCL._AC_UY327_FMwebp_QL65_.jpg",
+      hotelName: "Hotel Example 5",
+      img: "https://cdn.pixabay.com/photo/2023/07/04/10/20/river-8105970_1280.jpg",
       customer: "Harold Carol",
       date: "1 March",
-      amount: 2000,
-      method: "Online",
+      price: 2000,
+      paymentMethod: "Online Payment",
       status: "Pending",
     },
   ];
+
   return (
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -81,13 +82,13 @@ const List = () => {
               <TableCell className="tableCell">
                 <div className="cellWrapper">
                   <img src={row.img} alt="" className="image" />
-                  {row.product}
+                  {row.hotelName}
                 </div>
               </TableCell>
               <TableCell className="tableCell">{row.customer}</TableCell>
               <TableCell className="tableCell">{row.date}</TableCell>
-              <TableCell className="tableCell">{row.amount}</TableCell>
-              <TableCell className="tableCell">{row.method}</TableCell>
+              <TableCell className="tableCell">{row.price}</TableCell>
+              <TableCell className="tableCell">{row.paymentMethod}</TableCell>
               <TableCell className="tableCell">
                 <span className={`status ${row.status}`}>{row.status}</span>
               </TableCell>
